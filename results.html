@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your type — What's your type?</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="container">
+    <header class="header">
+      <h1>Your type</h1>
+      <p class="subtitle">Here's what we found in your conversation.</p>
+    </header>
+
+    <section id="results" class="results">
+      <!-- TODO: Render type label, description, and traits from sessionStorage -->
+      <div id="results-loading" class="loading">Loading results…</div>
+      <div id="results-content" class="results-content" hidden>
+        <h2 id="type-label" class="type-label"></h2>
+        <p id="type-description" class="type-description"></p>
+        <ul id="type-traits" class="type-traits"></ul>
+      </div>
+      <div id="results-empty" class="results-empty" hidden>
+        <p>No results found. Please analyze a conversation first.</p>
+        <a href="index.html" class="btn btn-secondary">Go back</a>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <a href="index.html" class="link">← Analyze another conversation</a>
+    </footer>
+  </main>
+
+  <script src="main.js"></script>
+</body>
+</html>

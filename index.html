@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>What's your type?</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="container">
+    <header class="header">
+      <h1>What's your type?</h1>
+      <p class="subtitle">Paste a conversation and discover your communication style.</p>
+    </header>
+
+    <form id="analyze-form" class="form">
+      <div class="form-group">
+        <label for="conversation">Conversation</label>
+        <textarea
+          id="conversation"
+          name="conversation"
+          rows="12"
+          placeholder="Paste your messages here..."
+          required
+        ></textarea>
+      </div>
+
+      <div class="form-actions">
+        <button type="submit" id="submit-btn" class="btn btn-primary">
+          Analyze
+        </button>
+      </div>
+
+      <p id="error-message" class="error-message" hidden></p>
+    </form>
+  </main>
+
+  <script src="main.js"></script>
+</body>
+</html>
