@@ -4,36 +4,69 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>What's your type?</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,700;1,9..144,600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body class="page-input">
+  <div class="bg-blob bg-blob--1" aria-hidden="true"></div>
+  <div class="bg-blob bg-blob--2" aria-hidden="true"></div>
+
   <main class="container">
     <header class="header">
+      <p class="eyebrow">Fictional crushes, decoded</p>
       <h1>What's your type?</h1>
-      <p class="subtitle">Paste a conversation and discover your communication style.</p>
+      <p class="subtitle">
+        List the characters you've had a crush on and we'll roast — I mean,
+        <em>reveal</em> — what your taste says about you.
+      </p>
     </header>
 
-    <form id="analyze-form" class="form">
+    <form id="analyze-form" class="form" novalidate>
       <div class="form-group">
-        <label for="conversation">Conversation</label>
-        <textarea
-          id="conversation"
-          name="conversation"
-          rows="12"
-          placeholder="Paste your messages here..."
+        <label for="characters">Your crushes</label>
+        <p class="field-hint">Separate names with commas — mix fandoms freely.</p>
+        <input
+          type="text"
+          id="characters"
+          name="characters"
+          placeholder="e.g. Mr. Darcy, Loki, Wednesday Addams"
+          autocomplete="off"
           required
+        >
+      </div>
+
+      <div class="form-group">
+        <label for="notes">
+          What did you love about them?
+          <span class="label-optional">optional</span>
+        </label>
+        <textarea
+          id="notes"
+          name="notes"
+          rows="4"
+          placeholder="The brooding stares, the tragic backstory, the fact that they'd probably forget your birthday…"
         ></textarea>
       </div>
 
       <div class="form-actions">
         <button type="submit" id="submit-btn" class="btn btn-primary">
-          Analyze
+          <span class="btn-label">Reveal my type</span>
+          <span class="btn-spinner" hidden aria-hidden="true"></span>
         </button>
       </div>
 
-      <p id="error-message" class="error-message" hidden></p>
+      <p id="error-message" class="error-message" hidden role="alert"></p>
     </form>
   </main>
+
+  <div id="loading-overlay" class="loading-overlay" hidden aria-live="polite">
+    <div class="loading-card">
+      <div class="loading-spinner" aria-hidden="true"></div>
+      <p class="loading-text">Reading your type like tea leaves…</p>
+    </div>
+  </div>
 
   <script src="main.js"></script>
 </body>
