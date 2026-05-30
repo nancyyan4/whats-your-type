@@ -29,7 +29,6 @@ function initInputPage() {
   const form = document.getElementById('analyze-form');
   const submitBtn = document.getElementById('submit-btn');
   const errorMessage = document.getElementById('error-message');
-  const loadingOverlay = document.getElementById('loading-overlay');
 
   form.addEventListener('submit', async (event) => {
     event.preventDefault();
@@ -45,7 +44,7 @@ function initInputPage() {
     }
 
     hideError(errorMessage);
-    setLoading(submitBtn, loadingOverlay, true);
+    setLoading(submitBtn, true);
 
     try {
       const results = await analyzeCharacters(characters, notes || undefined);
@@ -53,7 +52,7 @@ function initInputPage() {
       window.location.href = 'results.html';
     } catch (error) {
       showError(errorMessage, error.message || 'Something went wrong. Please try again.');
-      setLoading(submitBtn, loadingOverlay, false);
+      setLoading(submitBtn, false);
     }
   });
 }
@@ -280,12 +279,8 @@ function hideError(el) {
   el.hidden = true;
 }
 
-function setLoading(button, overlay, isLoading) {
+function setLoading(button, isLoading) {
   button.disabled = isLoading;
   button.querySelector('.btn-label').textContent = isLoading ? 'Analyzing…' : 'Reveal my type';
   button.querySelector('.btn-spinner').hidden = !isLoading;
-
-  if (overlay) {
-    overlay.hidden = !isLoading;
-  }
 }
